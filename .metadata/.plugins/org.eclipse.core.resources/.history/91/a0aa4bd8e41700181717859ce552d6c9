@@ -86,19 +86,12 @@ public class DataMatrix {
         return newMatrix;
 
 	}
-	public int getNrCols(){
+	public int getCols(){
 		return c;
 		
 	}
-	public int getNrRows(){
+	public int getRows(){
 		return r;
-	}
-	public String[] getColumn(int nr){
-		String[] column = new String[r];
-		for(int i = 0; i < r ; i++){
-			column[i] = matrix.get(nr).get(i); 
-		}
-		return column;
 	}
 	
 }

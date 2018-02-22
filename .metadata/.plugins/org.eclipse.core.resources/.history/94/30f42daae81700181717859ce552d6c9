@@ -1,0 +1,26 @@
+package DecisionTree;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class main {
+
+	public static void main(String[] args) {
+		String file = "/Users/Dalle/Dropbox/Skola/4/AI - EDAF70/Ass2/text.txt";
+		DataMatrix matrix = new DataMatrix(file);
+		String[][] newmatrix = matrix.get();
+		String[] col = matrix.getColumn(0);
+		Map<String, Integer> seussCount = new HashMap<String,Integer>();
+	    for(String t: col) {
+	       Integer i = seussCount.get(t);
+	       if (i ==  null) {
+	           i = 0;
+	       }
+	       seussCount.put(t, i + 1);
+	    }
+	    Set<String> set = seussCount.keySet();
+	    String[] keyset = set.toArray(null);
+	    System.out.println(seussCount.get(keyset[0]) + keyset[0]);
+	}
+}

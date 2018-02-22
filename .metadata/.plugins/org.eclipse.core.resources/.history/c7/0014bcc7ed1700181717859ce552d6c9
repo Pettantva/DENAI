@@ -7,16 +7,13 @@ import java.util.Set;
 public class main {
 
 	public static void main(String[] args) {
-		test();
-	}
-	public static void test(){
 		String file = "/Users/Dalle/Dropbox/Skola/4/AI - EDAF70/Ass2/text.txt";
 		DataMatrix matrix = new DataMatrix(file);
 		String[][] newmatrix = matrix.get();
 		String[] col = matrix.getColumn(0);
 		String[] decision = matrix.getColumn(matrix.getNrCols() - 1);
 		Map<String, Integer> seussCount = new HashMap<String,Integer>();
-	    for(int i = 1; i < col.length ; i++){
+	    for(int i = 0; i < col.length ; i++){
 	    	String combined = col[i] + " " + decision[i];
 	       Integer count = seussCount.get(combined);
 	       if (count ==  null) {
@@ -26,8 +23,6 @@ public class main {
 	    }
 	    Set<String> set = seussCount.keySet();
 	    String[] keyset = set.toArray(new String[set.size()]);
-	    for(int j = 0; j < keyset.length ; j++){
-	    	System.out.println(keyset[j]+ " " + seussCount.get(keyset[j]));
-	    }
+	    System.out.println(seussCount.get(keyset[1]) + keyset[1]);
 	}
 }

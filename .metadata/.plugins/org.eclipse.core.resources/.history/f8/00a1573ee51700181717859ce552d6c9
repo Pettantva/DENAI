@@ -1,0 +1,11 @@
+package DecisionTree;
+
+public class main {
+
+	public static void main(String[] args) {
+		String file = "/Users/Dalle/Dropbox/Skola/4/AI - EDAF70/Ass2/text.txt";
+		DataMatrix matrix = new DataMatrix(file);
+		String[][] newmatrix = matrix.get();
+		System.out.println(matrix.getColumn(0).length);
+	}
+}
