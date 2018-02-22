@@ -1,0 +1,14 @@
+package DecisionTree;
+
+public class main {
+
+	public static void main(String[] args) {
+		String file = "/Users/Dalle/Dropbox/Skola/4/AI - EDAF70/Ass2/text.txt";
+		DataMatrix matrix = new DataMatrix(file);
+		String[][] newmatrix = matrix.get();
+		String[] col = matrix.getColumn(0);
+		for(int i = 0; i < col.length; i++){
+			System.out.println(col[i]);
+		}
+	}
+}
