@@ -1,0 +1,60 @@
+package DecisionTree;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class main {
+
+	public static void main(String[] args) {
+		String line = "{none,half,full}";
+		String newline = line.replace("a", "t");
+		System.out.println(newline);
+		
+		
+		
+		
+		String file = "/Users/Dalle/Dropbox/Skola/4/AI - EDAF70/Ass2/text.txt";
+		DataMatrix matrix = new DataMatrix(file);
+		String[][] newmatrix = matrix.get();
+		matrix.printMatrix();
+		//test();
+		
+	}
+	public static String[] test(){ //utskriften betyder för tillfället: första kolumnen är om det finns alernativ(första kolumnen i datan) och andra är om dem gick in på restaurangen tredje är hur många förekomster av just den kombination som finns
+		String file = "/Users/Dalle/Dropbox/Skola/4/AI - EDAF70/Ass2/text.txt";
+		DataMatrix matrix = new DataMatrix(file);
+		String[][] newmatrix = matrix.get();
+		String[] col = matrix.getColumn(0);
+		String[] decision = matrix.getColumn(matrix.getNrCols() - 1);
+		Map<String, Integer> attributeCount = new HashMap<String,Integer>();
+	    for(int i = 1; i < col.length ; i++){
+	    	String combined = col[i];
+	       Integer count = attributeCount.get(combined);
+	       if (count ==  null) {
+	           count = 0;
+	       }
+	       attributeCount.put(combined, count + 1);
+	    }
+		Map<String, Integer> seussCount = new HashMap<String,Integer>();
+	    for(int i = 1; i < col.length ; i++){
+	    	String combined = col[i] + " " + decision[i];
+	       Integer count = seussCount.get(combined);
+	       if (count ==  null) {
+	           count = 0;
+	       }
+	       seussCount.put(combined, count + 1);
+	    }
+	    Set<String> set = seussCount.keySet();
+	    String[] keyset = set.toArray(new String[set.size()]);
+	    String[] collect = new String[keyset.length];
+	    for(int j = 0; j < keyset.length ; j++){
+	    	collect[j] = keyset[j]+ " " + seussCount.get(keyset[j]);
+	    }
+	    return collect;
+	}
+	public static void beforeEval(){
+		String[] collection = test();
+		
+	}
+}

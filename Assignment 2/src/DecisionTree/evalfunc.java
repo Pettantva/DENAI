@@ -1,7 +1,20 @@
 package DecisionTree;
 
 public class evalfunc {
-	public evalfunc(){
+	private String[][] typeData;
+	private int size;
+	private int nrAttributes;
+	public evalfunc(String[][] typeData){
+		size = 0;
+		this.typeData = typeData;
+		nrAttributes = typeData[0].length;
+		for(int i = 0; i < nrAttributes; i++){
+			if(typeData[1][i] == null){
+				typeData[1][i] = "0";
+			}
+			size = size + Integer.parseInt(typeData[1][i]);
+		}
+		
 		
 	}
 	private double bfunc(double q){
@@ -19,5 +32,20 @@ public class evalfunc {
     private double log2(double n)
     {
         return (Math.log(n) / Math.log(2));
+    }
+    public double gain(){
+    	double sum = 0;
+    	for(int i = 0; i < nrAttributes; i++){
+    		if(typeData[1][i] == null){
+    			typeData[1][i] = "0";
+    		}
+    		if(typeData[2][i] == null){
+    			typeData[2][i] = "0";
+    		}
+    		double numerator = Integer.parseInt(typeData[1][i]);
+    		double positive = Integer.parseInt(typeData[2][i]);
+    		sum = sum + (numerator/size*bfunc(positive/numerator)); 
+    	}
+    	return 1-sum;
     }
 }

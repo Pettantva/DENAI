@@ -7,6 +7,8 @@ import java.util.Set;
 public class main {
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
+=======
 		//test();
 		String file = "/Users/ludvigpettersson/Documents/text.txt";
 		DataMatrix matrix = new DataMatrix(file);
@@ -15,10 +17,14 @@ public class main {
 		Tree tree = P1AI.DecisionTree();
 		tree.print();
 		int hej = 0;
+>>>>>>> 241465681e08dc6d85b4479543db09000e8f3438
 		
 		
 		
 		
+<<<<<<< HEAD
+		
+=======
 		for(int i = 0; i < matrix.getNrRows(); i++){
 			System.out.println("");
 			for(int j = 0; j < matrix.getNrCols(); j++){
@@ -47,5 +53,8 @@ public class main {
 	    for(int j = 0; j < keyset.length ; j++){
 	    	System.out.println(keyset[j]+ " " + seussCount.get(keyset[j]));
 	    }
+>>>>>>> 241465681e08dc6d85b4479543db09000e8f3438
 	}
+	
+	
 }

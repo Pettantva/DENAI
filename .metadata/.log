@@ -467,6 +467,20 @@ java.lang.NullPointerException
 !STACK 0
 java.lang.NullPointerException
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.recommenders.rcp 2 15 2018-02-22 19:33:26.590
+!MESSAGE Failed to parse news feed
+!STACK 0
+java.net.UnknownHostException: www.codetrails.com: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:44)
+	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:102)
+=======
 !ENTRY org.eclipse.jdt.core 4 4 2018-02-22 18:39:09.529
 !MESSAGE Background Indexer Crash Recovery
 !STACK 0
@@ -502,6 +516,7 @@ javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: 
 	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.createLayeredSocket(SSLConnectionSocketFactory.java:290)
 	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:259)
 	at org.apache.http.impl.conn.HttpClientConnectionOperator.connect(HttpClientConnectionOperator.java:125)
+>>>>>>> 241465681e08dc6d85b4479543db09000e8f3438
 	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:319)
 	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:363)
 	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:219)
@@ -516,6 +531,13 @@ javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: 
 	at org.eclipse.recommenders.internal.rcp.news.CheckForProjectNewsJob.doRun(CheckForProjectNewsJob.java:89)
 	at org.eclipse.recommenders.internal.rcp.news.CheckForProjectNewsJob.run(CheckForProjectNewsJob.java:62)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+<<<<<<< HEAD
+
+!ENTRY org.eclipse.ui 4 0 2018-02-23 16:39:18.472
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+=======
 Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
 	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:385)
 	at sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:292)
@@ -580,3 +602,4 @@ org.eclipse.jdi.TimeoutException: Timeout occurred while waiting for packet 2796
 	at org.eclipse.debug.core.DebugPlugin$AsynchRunner.async(DebugPlugin.java:1097)
 	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:439)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+>>>>>>> 241465681e08dc6d85b4479543db09000e8f3438
