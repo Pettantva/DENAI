@@ -1,0 +1,32 @@
+package DecisionTree;
+import java.util.*;
+
+public class DecisionTreeLearning {
+	private int[][] examples;
+	private String[] attributes;
+	private int[][] parentExamples;
+
+	//Typerna av attributerna ska ändras boi
+	public DecisionTreeLearning(int[][] examples, String attributes[], int[][] parentExamples){
+		this.examples = examples;
+		this.attributes = attributes;
+		this.parentExamples = parentExamples;
+	}
+	//vad som returneras ska ändras boi
+	public String DecisionTree(){
+		if(examples == null){
+			return PluralityValue(parentExamples);
+			
+		}
+		return "hej";
+	}
+	
+	private boolean PluralityValue(int[][] parentExamples){
+	
+		return true;
+	}
+	
+	private Importance(int i, int j){
+		
+	}
+}

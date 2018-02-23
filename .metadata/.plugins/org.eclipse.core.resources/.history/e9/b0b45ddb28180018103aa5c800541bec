@@ -1,0 +1,83 @@
+package DecisionTree;
+import java.util.*;
+
+public class DecisionTreeLearning {
+	private String[][] examples;
+	private String[] attributes;
+	private String[][] parentExamples;
+	private String[][] tree;
+	private boolean examplesSameClass;
+	private boolean classification;
+	private int values;
+
+	//Typerna av attributerna ska ändras boi
+	public DecisionTreeLearning(String[][] examples, String attributes[], String[][] parentExamples){
+		this.examples = examples;
+		this.attributes = attributes;
+		this.parentExamples = parentExamples;
+		setSameClass();
+		this.values = 2;
+		this.tree = null;
+	}
+	//vad som returneras ska ändras boi
+	public String DecisionTree(){
+		if(examples == null){
+			return PluralityValue(parentExamples, 0);
+		}
+		else if(examplesSameClass){
+			return classification;
+		}
+		else if(attributes == null){
+			return PluralityValue(parentExamples);
+		}
+		//If there are some positive and some negative examples, 
+		//then choose the best attribute to split them. 
+		//Figure 18.4(b) shows Hungry being used to split
+		//the remaining examples.
+		else{ 
+			int gain = Integer.MIN_VALUE;
+			int nbr = 0;
+			for(int j = 0; j < examples.length; j++){
+				int temp = Importance(attributes[j], examples);
+				if (temp > gain){
+					gain = temp;
+					nbr = j;
+				}
+			}
+			
+			this.tree = new String[1][1]; //hur ska trädet representeras
+			int[][] exs = new int[][];
+			for(int i = 0; i < values; i ++){
+				
+			}
+			/*
+			A←argmax a ∈ attributes IMPORTANCE(a, examples)
+			tree←a new decision tree with root test A
+			for each value vk of A do
+			exs ←{e : e ∈examples and e.A = vk}
+			subtree←DECISION-TREE-LEARNING(exs, attributes −A, examples)
+			add a branch to tree with label (A = vk) and subtree subtree
+			return tree*/
+		}
+		return false;
+	}
+	
+	private void setSameClass(){
+		
+	}
+	
+	private String PluralityValue(String[][] pE, int c){
+		String co = "null";
+		String[] values;
+		for(int r = 0; r < pE.length; r++){
+			values[r] = pE[r][c];
+		}
+		for(int i = 0; i < values.length; i++){
+			
+		}
+	}
+	
+	private int Importance(String attri, int[][] exams){
+		return 0;
+	}
+}
