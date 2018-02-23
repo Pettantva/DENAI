@@ -16,8 +16,11 @@ public class DataMatrix {
 	int count;
 	int c;
 	int r;
+<<<<<<< HEAD
 	Map<String, Integer> attribute;
+=======
 	String [] attributes;
+>>>>>>> 241465681e08dc6d85b4479543db09000e8f3438
 	
 	public DataMatrix(String filename){
 		this.fileName = filename;
