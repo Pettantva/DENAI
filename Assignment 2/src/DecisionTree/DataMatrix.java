@@ -5,19 +5,24 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DataMatrix {
 	String fileName;
 	String line;
 	ArrayList<ArrayList<String>> matrix;
+	
 	int count;
 	int c;
 	int r;
+	Map<String, Integer> attribute;
 	
 	public DataMatrix(String filename){
 		this.fileName = filename;
 		line = null;
 		matrix = new ArrayList<ArrayList<String>>();
+		
 		count = 0;
 	}
 	public String[][] get(){
@@ -38,19 +43,26 @@ public class DataMatrix {
             			//String attribute = line.substring(1, 4);
             			if(String.valueOf(line.charAt(1)).equals("A")){
             				String[] attributeRow = line.split("\\s+");
+            				String attributevalue  = attributeRow[2].replace("{", "");
+            				attributevalue = attributevalue.replace("}", "");
+            				String[] attributevalues = attributevalue.split(",");
+            				
             				matrix.add(new ArrayList<String>());
             				matrix.get(count).add(attributeRow[1]);
+            				String combined = "";
+            				for(int i = 0; i < attributevalues.length ; i++){
+            					combined = combined + attributevalues[i] +" ";
+            				}
+            				matrix.get(count).add(combined);
             				count++;
-            			
+            				
             			}
             		}
             		else{
             			String[] dataRow = line.split(",");
             			for(int i = 0; i < dataRow.length; i++ ){
             				matrix.get(i).add(dataRow[i]);
-            				
             			}
-            			
             		}
             	}
             	}
@@ -99,6 +111,14 @@ public class DataMatrix {
 			column[i] = matrix.get(nr).get(i); 
 		}
 		return column;
+	}
+	public void printMatrix(){
+		for(int i = 0; i < getNrRows() ; i++){
+			for(int j = 0; j < getNrCols(); j++){
+				System.out.print(matrix.get(j).get(i) + "     ");
+			}
+			System.out.println();
+		}
 	}
 	
 }

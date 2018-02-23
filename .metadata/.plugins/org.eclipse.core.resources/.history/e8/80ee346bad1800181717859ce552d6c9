@@ -1,0 +1,63 @@
+package DecisionTree;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class importance {
+	private String[][] newmatrix;
+	String attribute;
+	int rows;
+	int cols;
+	public importance(String attribute,String[][] newmatrix){
+		this.attribute = attribute;
+		this.newmatrix = newmatrix;
+		this.cols = newmatrix[0].length;
+		this.rows = newmatrix.length;
+		String[] show = collect();
+		for(int i = 0; i < show.length ; i++){
+			System.out.println(show[i]);
+		}
+		
+	}
+	private String[] collect(){
+		String[] col = getColumn(attributeNr());
+		String[] decision = getColumn(newmatrix.length -1);
+		
+	    
+		Map<String, Integer> seussCount = new HashMap<String,Integer>();
+	    for(int i = 2; i < col.length ; i++){
+	    	String combined = col[i] + " " + decision[i];
+	       Integer count = seussCount.get(combined);
+	       if (count ==  null) {
+	           count = 0;
+	       }
+	       seussCount.put(combined, count + 1);
+	    }
+	    Set<String> set = seussCount.keySet();
+	    String[] keyset = set.toArray(new String[set.size()]);
+	    String[] collect = new String[keyset.length];
+	    for(int j = 0; j < keyset.length ; j++){
+	    	collect[j] = keyset[j]+ " " + seussCount.get(keyset[j]);
+	    }
+	    return collect;
+		
+	}
+	private String[] getColumn(int nr){
+		String[] column = new String[rows];
+		for(int i = 0; i < rows ; i++){
+			column[i] = newmatrix[i][nr]; // eventuellt tvärtom
+		}
+		return column;
+	}
+	private int attributeNr(){
+		int attributeNr = 0;
+		for(int i = 0; i < newmatrix[0].length ; i++){
+			if(newmatrix[0][i].equals(attribute)){
+				attributeNr = i;
+			}
+		}
+		return attributeNr;
+	}
+
+}
