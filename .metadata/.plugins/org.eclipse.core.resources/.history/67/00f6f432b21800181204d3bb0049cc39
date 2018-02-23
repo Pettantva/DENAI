@@ -165,11 +165,8 @@ public class DecisionTreeLearning {
 	}
 	
 	private String PluralityValue(String[][] pE){
-		for(int i = 0; i < pE.length; i++){
-			for(int j = 0; j < pE.length; j++){
-				
-			}
-		}
+		
+		
 	}
 		/*int[] nbr = new int[pE.length];
 		String[] values = new String[pE.length];
