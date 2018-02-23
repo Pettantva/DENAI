@@ -6,13 +6,11 @@ public class Tree {
 	private String name;
 	//private String value;
 	private ArrayList<Tree> leafs;
-	private String goal;
 	
 	public Tree(String name){
 		this.name = name;
 		//this.value = value;
 		this.leafs = new ArrayList<Tree>();
-		this.goal = "null";
 	}
 	
 	public void addChild(Tree child){
@@ -25,7 +23,5 @@ public class Tree {
 			leafs.get(i).print();
 		}
 	}
-	public void addGoal(String goal){
-		this.goal = goal;
-	}	
+	
 }

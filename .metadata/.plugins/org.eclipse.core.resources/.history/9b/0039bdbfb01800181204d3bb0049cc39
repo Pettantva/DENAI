@@ -45,15 +45,15 @@ public class DecisionTreeLearning {
 			}
 		}
 		if(noex){
-			Tree leaf = new Tree(PluralityValue(this.parentExamples, 0));
+			Tree leaf = new Tree(PluralityValue(this.parentExamples, 0), "");
 			return leaf;
 		}
 		else if(examplesSameClass){
-			Tree leaf = new Tree(classification);
+			Tree leaf = new Tree(classification, "");
 			return leaf;
 		}
 		else if(noat){
-			Tree leaf = new Tree(PluralityValue(this.examples, 0));
+			Tree leaf = new Tree(PluralityValue(this.examples, 0), "");
 			return leaf;
 		}
 		else{
@@ -67,7 +67,7 @@ public class DecisionTreeLearning {
 					nbr = j;
 				}
 			}
-			this.tree = new Tree(attributes[nbr]); //hur ska trädet representeras
+			this.tree = new Tree(attributes[nbr], "epp"); //hur ska trädet representeras
 			String[] values = getValues(nbr);
 			String[][][] exs = new String[values.length][rows][cols];
 			for(int v = 0; v < values.length; v++){

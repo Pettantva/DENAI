@@ -49,7 +49,7 @@ public class DecisionTreeLearning {
 			return leaf;
 		}
 		else if(examplesSameClass){
-			Tree leaf = new Tree(classification);
+			Tree leaf = new Tree(classification, "");
 			return leaf;
 		}
 		else if(noat){
