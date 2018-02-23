@@ -1,0 +1,183 @@
+package DecisionTree;
+import java.util.*;
+
+public class DecisionTreeLearning {
+	private String[][] examples;
+	private String[] attributes;
+	private String[][] parentExamples;
+	private Tree tree;
+	private boolean examplesSameClass;
+	private String classification;
+	private int rows;
+	private int cols;
+
+	//uppdatera rows and cols
+	
+	
+	public DecisionTreeLearning(String[][] examples, String attributes[], String[][] parentExamples){
+		this.examples = examples;
+		this.rows = examples.length;
+		this.cols = examples[0].length;
+		this.attributes = attributes;
+		this.parentExamples = parentExamples;
+		setSameClass();
+		this.tree = null;
+	}
+	//vad som returneras ska ändras boi
+	public Tree DecisionTree(){
+		if(examples == null){
+			Tree leaf = new Tree(PluralityValue(this.parentExamples, 0), "");
+			return leaf;
+		}
+		else if(examplesSameClass){
+			Tree leaf = new Tree(classification, "");
+			return leaf;
+		}
+		else if(attributes == null){
+			Tree leaf = new Tree(PluralityValue(this.examples, 0), "");
+			return leaf;
+		}
+		//If there are some positive and some negative examples, 
+		//then choose the best attribute to split them. 
+		//Figure 18.4(b) shows Hungry being used to split
+		//the remaining examples.
+		else{ 
+			int gain = Integer.MIN_VALUE;
+			int nbr = 0;
+			for(int j = 0; j < rows; j++){
+				int temp = Importance(attributes[j], examples);
+				if (temp > gain){
+					gain = temp;
+					nbr = j;
+				}
+			}
+			this.tree = new Tree(attributes[nbr], "epp"); //hur ska trädet representeras
+			String[] values = getValues(nbr);
+			String[][][] exs = new String[rows][cols][values.length];
+			for(int v = 0; v < values.length; v++){
+				for(int i = 0; i < rows; i++){
+					for(int j = 0; j < cols; j++){
+						if(j != nbr){
+							exs[v][i][j] = examples[i][j];
+						}
+						else{
+							if(examples[i][j] == values[v]){
+								exs[v][i][j] = examples[i][j];
+							}
+							else{
+								exs[v][i][j] = null;
+							}
+						}
+					}
+				}	
+			}
+			String[] newAtr = new String[attributes.length-1];
+			boolean jump = false;
+			for(int i = 0; i < attributes.length; i++){
+				if(i == nbr){
+					jump = true;
+				}
+				else{
+					if(jump){
+						newAtr[i-1] = attributes[i];
+					}
+					else{
+						newAtr[i] = attributes[i];
+					}
+				}
+			}
+			DecisionTreeLearning P1AI;
+			for(int v = 0; v < values.length; v++){
+				P1AI = new DecisionTreeLearning(exs[v], newAtr, this.examples);
+				Tree subTree = P1AI.DecisionTree();
+				tree.addChild(subTree);
+			}
+			/*
+			A←argmax a ∈ attributes IMPORTANCE(a, examples)
+			tree←a new decision tree with root test A
+			for each value vk of A do
+			exs ←{e : e ∈examples and e.A = vk}
+			subtree←DECISION-TREE-LEARNING(exs, attributes −A, examples)
+			add a branch to tree with label (A = vk) and subtree subtree
+			return tree*/
+		}
+		return this.tree;
+	}
+	
+	private String[] getValues(int c){
+		String[] values = new String[examples[0].length];
+		for(int r = 0; r < examples[0].length; r++){
+			values[r] = examples[r][c];
+		}
+		int unique = 0;
+		boolean uni = true;
+		for(int i = 0; i < values.length; i++){
+			for(int j = 0; j < values.length; j++){
+				if((i != j) && values[i] == values[j]){
+					uni = false;
+				}
+			}
+			if(uni){
+				unique++;
+			}
+		}
+		String[] val = new String[unique];
+		boolean cont = true;
+		String temp;
+		for(int i = 0; i < unique; i++){
+			for(int j = 0; j < values.length; j++){
+				if(val[i] != null){
+					if(val[i] == val[j]){
+						cont = false;
+					}
+				}
+			}
+			if(cont){
+				val[i] = 
+			}
+		}
+		return val;
+	}
+	
+	private void setSameClass(){ //fel length?
+		this.examplesSameClass = true;
+		this.classification = examples[0][examples.length-1];
+		for(int i = 0; i < examples.length - 1; i ++){
+			if((i + 1) < examples.length){
+				if(examples[i][examples.length-1] != examples[i+1][examples.length-1]){
+					this.examplesSameClass = false;
+					this.classification = null;
+				}
+			}
+		}
+	}
+	
+	private String PluralityValue(String[][] pE, int c){
+		int[] nbr = new int[pE.length];
+		String[] values = new String[pE.length];
+		for(int r = 0; r < pE.length; r++){
+			values[r] = pE[r][c];
+		}
+		for(int i = 0; i < values.length; i++){
+			nbr[i] = 0;
+			for(int j = 0; j < values.length; j++){
+				if(values[i] == values[j]){
+					nbr[i]++;
+				}
+			}
+		}
+		int max = 0;
+		int maxplace = 0;
+		for(int q = 0; q < nbr.length; q++){
+			if(nbr[q] > max){
+				max = nbr[q];
+				maxplace = q;
+			}
+		}
+		return values[maxplace];
+	}
+	
+	private int Importance(String attri, String[][] ex){
+		return 0;
+	}
+}

@@ -1,0 +1,46 @@
+package DecisionTree;
+import java.util.*;
+
+public class DecisionTreeLearning {
+	private int[][] examples;
+	private String[] attributes;
+	private int[][] parentExamples;
+	private String[][] tree;
+	private boolean examplesSameClass;
+
+	//Typerna av attributerna ska ändras boi
+	public DecisionTreeLearning(int[][] examples, String attributes[], int[][] parentExamples){
+		this.examples = examples;
+		this.attributes = attributes;
+		this.parentExamples = parentExamples;
+		this.examplesSameClass = false;
+		//this.tree = 
+	}
+	//vad som returneras ska ändras boi
+	public boolean DecisionTree(){
+		if(examples == null){
+			return PluralityValue(parentExamples);
+		}
+		setSameClass();
+		else if(examplesSameClass){
+			return true;
+		}
+		else{
+			
+		}
+		return false;
+	}
+	
+	private void setSameClass(){
+		
+	}
+	
+	private boolean PluralityValue(int[][] pE){
+	
+		return true;
+	}
+	
+	private Importance(int i, int j){
+		
+	}
+}

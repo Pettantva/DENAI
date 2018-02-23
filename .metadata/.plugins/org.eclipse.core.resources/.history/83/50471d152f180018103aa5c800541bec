@@ -1,0 +1,20 @@
+package DecisionTree;
+
+import java.util.ArrayList;
+
+public class Tree {
+	private String name;
+	private String cause;
+	private ArrayList<Tree> leafs;
+	
+	public Tree(String name, String cause){
+		this.name = name;
+		this.cause = cause;
+		this.leafs = new ArrayList<Tree>();
+	}
+	
+	public void addChild(Tree child){
+		leafs.add(child);
+	}
+	
+}

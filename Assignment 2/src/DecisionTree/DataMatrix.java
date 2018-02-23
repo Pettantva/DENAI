@@ -13,6 +13,7 @@ public class DataMatrix {
 	int count;
 	int c;
 	int r;
+	String [] attributes;
 	
 	public DataMatrix(String filename){
 		this.fileName = filename;
@@ -101,4 +102,22 @@ public class DataMatrix {
 		return column;
 	}
 	
+	public String[][] getExamples(String[][] mat){
+		String[][] examples = new String[this.r-1][this.c];
+		for(int i = 1; i < this.r; i++){
+			for(int j = 0; j < this.c; j++){
+				examples[i-1][j] = mat[i][j];
+			}
+		}
+		return examples;
+	}
+	
+	public String[] getAttributes(String[][] temp){
+		String[] attributes = new String[this.c];
+		for(int o = 0; o < this.c; o++){
+			attributes[o] = temp[0][o];
+			//System.out.println(temp[0][o]);
+		}
+		return attributes;
+	}
 }

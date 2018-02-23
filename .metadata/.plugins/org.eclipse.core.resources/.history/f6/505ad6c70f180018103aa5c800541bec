@@ -1,0 +1,67 @@
+package DecisionTree;
+import java.util.*;
+
+public class DecisionTreeLearning {
+	private int[][] examples;
+	private String[] attributes;
+	private int[][] parentExamples;
+	private String[][] tree;
+	private boolean examplesSameClass;
+	private boolean classification;
+	private int values;
+
+	//Typerna av attributerna ska ändras boi
+	public DecisionTreeLearning(int[][] examples, String attributes[], int[][] parentExamples){
+		this.examples = examples;
+		this.attributes = attributes;
+		this.parentExamples = parentExamples;
+		setSameClass();
+		this.values = 2;
+		this.tree = null;
+	}
+	//vad som returneras ska ändras boi
+	public boolean DecisionTree(){
+		if(examples == null){
+			return PluralityValue(parentExamples);
+		}
+		else if(examplesSameClass){
+			return classification;
+		}
+		else if(attributes == null){
+			return PluralityValue(parentExamples);
+		}
+		//If there are some positive and some negative examples, 
+		//then choose the best attribute to split them. 
+		//Figure 18.4(b) shows Hungry being used to split
+		//the remaining examples.
+		else{ 
+			
+			this.tree = new String[1][1]; //hur ska trädet representeras
+			for(int i = 0; i < values; i ++){
+				int[][] exs = new int[2][2]; 
+			}
+			/*
+			A←argmax a ∈ attributes IMPORTANCE(a, examples)
+			tree←a new decision tree with root test A
+			for each value vk of A do
+			exs ←{e : e ∈examples and e.A = vk}
+			subtree←DECISION-TREE-LEARNING(exs, attributes −A, examples)
+			add a branch to tree with label (A = vk) and subtree subtree
+			return tree*/
+		}
+		return false;
+	}
+	
+	private void setSameClass(){
+		
+	}
+	
+	private boolean PluralityValue(int[][] pE){
+	
+		return true;
+	}
+	
+	private Importance(int i, int j){
+		
+	}
+}

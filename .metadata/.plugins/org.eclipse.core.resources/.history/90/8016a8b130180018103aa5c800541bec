@@ -1,0 +1,115 @@
+package DecisionTree;
+import java.util.*;
+
+public class DecisionTreeLearning {
+	private String[][] examples;
+	private String[] attributes;
+	private String[][] parentExamples;
+	private Tree tree;
+	private boolean examplesSameClass;
+	private String classification;
+
+	public DecisionTreeLearning(String[][] examples, String attributes[], String[][] parentExamples){
+		this.examples = examples;
+		this.attributes = attributes;
+		this.parentExamples = parentExamples;
+		setSameClass();
+		this.tree = null;
+	}
+	//vad som returneras ska ändras boi
+	public String DecisionTree(){
+		if(examples == null){
+			return PluralityValue(this.parentExamples, 0);
+		}
+		else if(examplesSameClass){
+			return classification;
+		}
+		else if(attributes == null){
+			return PluralityValue(this.examples, 0);
+		}
+		//If there are some positive and some negative examples, 
+		//then choose the best attribute to split them. 
+		//Figure 18.4(b) shows Hungry being used to split
+		//the remaining examples.
+		else{ 
+			int gain = Integer.MIN_VALUE;
+			int nbr = 0;
+			for(int j = 0; j < examples.length; j++){
+				int temp = Importance(attributes[j], examples);
+				if (temp > gain){
+					gain = temp;
+					nbr = j;
+				}
+			}
+			String[] values = getValues(nbr);
+			this.tree = new Tree(attributes[nbr]); //hur ska trädet representeras
+			int[][] exs = new int[][];
+			for(int i = 0; i < values.length; i ++){
+				
+			}
+			/*
+			A←argmax a ∈ attributes IMPORTANCE(a, examples)
+			tree←a new decision tree with root test A
+			for each value vk of A do
+			exs ←{e : e ∈examples and e.A = vk}
+			subtree←DECISION-TREE-LEARNING(exs, attributes −A, examples)
+			add a branch to tree with label (A = vk) and subtree subtree
+			return tree*/
+		}
+		return false;
+	}
+	
+	private String[] getValues(int c){
+		String[] values = new String[examples.length];
+		for(int r = 0; r < examples.length; r++){
+			values[r] = examples[r][c];
+		}
+		int unique = 0;
+		for(int i = 0; i < values.length; i++){
+			values[r] = examples[r][c];
+		}
+		return values;
+	}
+	
+	private void setSameClass(){
+		this.examplesSameClass = true;
+		this.classification = examples[0][examples.length-1];
+		for(int i = 0; i < examples.length - 1; i ++){
+			if((i + 1) < examples.length){
+				if(examples[i][examples.length-1] != examples[i+1][examples.length-1]){
+					this.examplesSameClass = false;
+					this.classification = null;
+				}
+			}
+		}
+	}
+	
+	private String PluralityValue(String[][] pE, int c){
+		int[] nbr = new int[pE.length];
+		String[] values = new String[pE.length];
+		for(int r = 0; r < pE.length; r++){
+			values[r] = pE[r][c];
+		}
+		for(int i = 0; i < values.length; i++){
+			nbr[i] = 0;
+			for(int j = 0; j < values.length; j++){
+				if(values[i] == values[j]){
+					nbr[i]++;
+				}
+			}
+		}
+		int max = 0;
+		int maxplace = 0;
+		for(int q = 0; q < nbr.length; q++){
+			if(nbr[q] > max){
+				max = nbr[q];
+				maxplace = q;
+			}
+		}
+		return values[maxplace];
+	}
+	
+	private int Importance(String attri, String[][] ex){
+		return 0;
+	}
+}

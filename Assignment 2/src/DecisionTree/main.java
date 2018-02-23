@@ -7,7 +7,25 @@ import java.util.Set;
 public class main {
 
 	public static void main(String[] args) {
-		test();
+		//test();
+		String file = "/Users/ludvigpettersson/Documents/text.txt";
+		DataMatrix matrix = new DataMatrix(file);
+		String[][] mat = matrix.get();
+		DecisionTreeLearning P1AI = new DecisionTreeLearning(matrix.getExamples(mat), matrix.getAttributes(mat), null, mat);
+		Tree tree = P1AI.DecisionTree();
+		tree.print();
+		int hej = 0;
+		
+		
+		
+		
+		for(int i = 0; i < matrix.getNrRows(); i++){
+			System.out.println("");
+			for(int j = 0; j < matrix.getNrCols(); j++){
+				System.out.print(mat[i][j] + "     ");
+			}
+		}
+		
 	}
 	public static void test(){
 		String file = "/Users/Dalle/Dropbox/Skola/4/AI - EDAF70/Ass2/text.txt";
