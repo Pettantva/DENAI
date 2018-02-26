@@ -123,10 +123,10 @@ public class DataMatrix {
 	}
 	
 	public String[][] getExamples(String[][] mat){
-		String[][] examples = new String[this.r-1][this.c];
-		for(int i = 1; i < this.r; i++){
+		String[][] examples = new String[this.r-2][this.c];
+		for(int i = 2; i < this.r; i++){
 			for(int j = 0; j < this.c; j++){
-				examples[i-1][j] = mat[i][j];
+				examples[i-2][j] = mat[i][j];
 			}
 		}
 		return examples;

@@ -35,6 +35,7 @@ public class evalfunc {
     }
     public double gain(){
     	double sum = 0;
+    	double positiveSum = 0;
     	for(int i = 0; i < nrAttributes; i++){
     		if(typeData[1][i] == null){
     			typeData[1][i] = "0";
@@ -44,8 +45,9 @@ public class evalfunc {
     		}
     		double numerator = Integer.parseInt(typeData[1][i]);
     		double positive = Integer.parseInt(typeData[2][i]);
+    		positiveSum = positiveSum + positive;
     		sum = sum + (numerator/size*bfunc(positive/numerator)); 
     	}
-    	return 1-sum;
+    	return bfunc(positiveSum/size)-sum;
     }
 }

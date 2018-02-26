@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Tree {
 	private String name;
-	//private String value;
+	private String value;
 	private ArrayList<Tree> leafs;
 	private String goal;
 	

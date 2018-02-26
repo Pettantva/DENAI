@@ -107,9 +107,9 @@ public class importance {
 		}
 		for(int p = 0; p < typeData.length; p++){
 			for(int c = 0; c < typeData[0].length; c++){
-				System.out.print(typeData[p][c] + " ");
+				//System.out.print(typeData[p][c] + " ");
 			}
-			System.out.println();
+			//System.out.println();
 		}
 		return typeData;		
 		
